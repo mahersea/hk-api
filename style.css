@@ -1,0 +1,50 @@
+.hidden {
+   display: none;
+}
+
+a.no_decoration {
+   color: white;
+}
+
+a.no_decoration:visited {
+   color: white;
+}
+
+a.no_decoration:hover {
+   color: white;
+   text-decoration: none;
+}
+
+.item_num {
+  font-size: 1.5em;
+  color: darkgrey;
+}
+.item_entry {
+   margin: 10px auto;
+}
+
+#main {
+   margin-bottom: 50px;
+}
+
+#content {
+   margin-bottom: 20px;
+}
+
+
+#scroll_text {
+   color: #555;
+   text-align: center;
+   margin: 20px auto;
+}
+
+#scroll_text > p {
+   margin-bottom: 0px;
+}
+
+header {
+   width:100%;
+   background: #ff6600;
+   color: white;
+   padding-bottom: 14px;
+}
