@@ -7,13 +7,13 @@ var scrollThrottle = null;
 var ajaxTimeout = null;
 var pageType = 'list';
 var baseURL = 'https://hacker-news.firebaseio.com/v0';
-var topItemsRequest = $.ajax(baseURL + '/topstories.json');
+var newItemsRequest = $.ajax(baseURL + '/newstories.json');
 var i = 1;
 
-function getMoreItems(topItems, offset) {
-   topItems = topItems.slice(offset, offset + itemLimit);
+function getMoreItems(newItems, offset) {
+   newItems = newItems.slice(offset, offset + itemLimit);
 
-   var requests = topItems.map(function(item) {
+   var requests = newItems.map(function(item) {
       var itemData = $.ajax(baseURL + '/item/' + item + '.json');
       return itemData;
    });
@@ -24,7 +24,7 @@ function getMoreItems(topItems, offset) {
       });
       results.forEach(function(result) {
          itemList.push(result);
-         $('#content').append(entryFormat(result, i));
+         $('#content').append(format(result, i));
          i++;
       });
    });
@@ -37,7 +37,7 @@ function getMoreItems(topItems, offset) {
    busy = false;
 }
 
-function entryFormat(data, i) {
+function format(data, i) {
    var link = '<span class=item_num>' + i + '.</span> <a class="lead" target="_blank" href="' + data.url + '" >' + data.title + '</a>',
        entryArgs = ['<div class="item_entry">',link,'</div>',];
    var blurb = entryArgs.join('');
@@ -57,9 +57,9 @@ $(window).scroll(function() {
    }, 300);
 });
 
-topItemsRequest.done(function(topItems) {
-   itemIds = topItems;
-   getMoreItems(topItems, offset);
+newItemsRequest.done(function(newItems) {
+   itemIds = newItems;
+   getMoreItems(newItems, offset);
 });
 
 
